@@ -20,7 +20,15 @@ config :chime_in, ChimeInWeb.Endpoint,
     layout: false
   ],
   pubsub_server: ChimeIn.PubSub,
-  live_view: [signing_salt: "mgVKajtz"]
+  live_view: [signing_salt: "mgVKajtz"],
+  plug: CORSPlug,
+  cors_plug_options: [
+    origin: ["http://localhost:5173"], # Vite's default port
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    headers: ["Authorization", "Content-Type", "Accept", "Origin", "User-Agent"],
+    credentials: true,
+    max_age: 86400
+  ]
 
 # Configures the mailer
 #

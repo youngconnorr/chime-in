@@ -14,16 +14,18 @@ defmodule ChimeInWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ChimeInWeb do
-    pipe_through :browser
+  scope "/graphql" do
+    pipe_through :api
 
-    get "/", PageController, :home
+    forward "/", Absinthe.Plug, schema: ChimeInWeb.Schema
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ChimeInWeb do
-  #   pipe_through :api
-  # end
+  if Mix.env() == :dev do
+    forward "/graphiql", Absinthe.Plug.GraphiQL, # to enable graphiql
+      schema: ChimeInWeb.Schema,
+      interface: :simple
+  end
+
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:chime_in, :dev_routes) do

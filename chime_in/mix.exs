@@ -33,6 +33,7 @@ defmodule ChimeIn.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.18"},
+      {:cors_plug, "~> 3.0"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:ecto_sqlite3, ">= 0.0.0"},
@@ -57,7 +58,11 @@ defmodule ChimeIn.MixProject do
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:poison, "~> 6.0"},
+      {:absinthe, "~> 1.7"},
+      {:absinthe_plug, "~> 1.5"},
+      {:faker, "~> 0.9"}
     ]
   end
 
