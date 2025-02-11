@@ -2,6 +2,7 @@ defmodule ChimeIn.Song do
   use Ecto.Schema
   import Ecto.Changeset
 
+  ##Verify schema
   schema "songs" do
     field :title, :string
     field :url, :string
@@ -13,6 +14,8 @@ defmodule ChimeIn.Song do
 
     timestamps(type: :utc_datetime)
   end
+
+
 
   @doc false
   def changeset(song, attrs) do
